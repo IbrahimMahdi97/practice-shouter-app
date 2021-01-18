@@ -1,7 +1,12 @@
-class Guest < ApplicationRecord
+class Guest
+  
+  def email
+    ""
+  end
 
-  class Guest
-    def email
-      ""
-    end
+  def liked?(_)
+    false
+  end
+
+
 end
