@@ -5,6 +5,7 @@
 <%
 =end%>
   <%= @shouts.each do |shout|%>
+    <%= avatar(shout.user) %>
     <%= link_to shout.user.username.capitalize %> 
       <%= render shout.content %> 
       <%= link_to shout do %>
