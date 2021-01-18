@@ -1,0 +1,15 @@
+<div>
+  <%
+=begin%>
+ <%= link_to @shout.username, @shout.user %>  
+<%
+=end%>
+  <%= @shouts.each do |shout|%>
+    <%= link_to shout.user.username.capitalize %> 
+      <%= render shout.content %> 
+      <%= link_to shout do %>
+        <%= time_ago_in_words(shout.created_at) %> ago
+      <% end %>
+      <br>
+  <% end %>
+</div>

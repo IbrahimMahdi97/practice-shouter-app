@@ -1,0 +1,2 @@
+module PhotoShoutHelper
+end

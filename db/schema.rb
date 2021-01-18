@@ -10,10 +10,40 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_06_172819) do
+ActiveRecord::Schema.define(version: 2021_01_18_175555) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "guests", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "photo_shouts", force: :cascade do |t|
+    t.string "image_file_name", null: false
+    t.string "image_content_type", null: false
+    t.bigint "image_file_size", null: false
+    t.datetime "image_updated_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "shouts", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "content_type", null: false
+    t.integer "content_id", null: false
+    t.index ["content_type", "content_id"], name: "index_shouts_on_content_type_and_content_id"
+    t.index ["user_id"], name: "index_shouts_on_user_id"
+  end
+
+  create_table "text_shouts", force: :cascade do |t|
+    t.string "body", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
@@ -28,4 +58,5 @@ ActiveRecord::Schema.define(version: 2021_01_06_172819) do
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
+  add_foreign_key "shouts", "users"
 end

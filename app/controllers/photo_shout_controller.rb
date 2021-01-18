@@ -1,0 +1,2 @@
+class PhotoShoutController < ApplicationController
+end
